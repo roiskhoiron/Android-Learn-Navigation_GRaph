@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment2">
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.example.navigation.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_categoryFragment2"
+            app:destination="@id/categoryFragment2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment2_to_profileActivity22"
+            app:destination="@+id/profileActivity2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragment2"
+        android:name="com.example.navigation.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment2_to_detailCategoryFragment"
+            app:destination="@id/detailCategoryFragment" />
+    </fragment>
+
+    <activity
+        android:id="@+id/profileActivity2"
+        android:name="com.example.navigation.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" >
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.dicoding.com/profile" />
+    </activity>
+
+    <fragment
+        android:id="@+id/detailCategoryFragment"
+        android:name="com.example.navigation.DetailCategoryFragment"
+        android:label="fragment_detail_category"
+        tools:layout="@layout/fragment_detail_category" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="default name" />
+
+        <argument
+            android:name="stock"
+            app:argType="long"
+            android:defaultValue="0L" />
+
+        <deepLink
+            android:id="@+id/deepLink2"
+            app:uri="https://www.dicoding.com/detail/{name}." />
+        <action
+            android:id="@+id/action_detailCategoryFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/homeFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
